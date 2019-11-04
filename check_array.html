@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>勾選並列出勾選的東西</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.min.js" integrity="sha256-chlNFSVx3TdcQ2Xlw7SvnbLAavAQLO0Y/LBiWX04viY=" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div id="app">
+        <label>
+            <input type="checkbox" v-model="a"/> 
+            <span>a</span>
+        </label>
+        <label>
+            <input type="checkbox" v-model="b"/> 
+            <span>b</span>
+        </label>
+        <label>
+            <input type="checkbox" v-model="c"/> 
+            <span>c</span>
+        </label>
+        <p>{{selected}}</p>
+    </div>
+
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                a: false,
+                b: false,
+                c: false,
+            },
+            computed: {
+                selected() {
+                                                // this[item] ＝data 裡的 key 值 a 或是 b 或是 c 
+                    return ['a','b','c'].filter(item => this[item]);
+                }
+            },
+        });
+    </script>
+</body>
+</html>
